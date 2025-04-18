@@ -33,7 +33,7 @@ You need to specify the net you want to train using arg -net
 
 ```bash
 # use gpu to train resnet18 with Pool Skip
-$ python train.py -net resnet50_poolskip -gpu
+$ python train.py -net resnet18_poolskip -gpu
 ```
 ### Acknowledgements
 This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
