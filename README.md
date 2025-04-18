@@ -11,7 +11,7 @@ Pretrained checkpoints on CIFAR-100 are included in this repo for quick verifica
 
 Our subsequent experiments have found that the performance of the PoolSkip structure improves when applied after a 1x1 convolution kernel. To integrate PoolSkip, simply insert it after the convolutional layer, but before the activation function and batch normalization layer.
 
-<div align="center"> <img src="./l2_l1.png" alt="ResNet Effect" width="1200"/> </div> <p align="center"> <i>Figure: $ \frac{l_{2}}{l_{1}} $ value quantitative comparison in ResNet350 and ResNet420 on CIFAR10 and CIFAR100 Datasets. The $ \frac{l_{2}}{l_{1}} $ values were computed based on the output sequence of the network, with and without the incorporation of the Pool Skip. The plot highlights a moderate alleviation of the network degradation issue in shallow layers upon the integration of Pool Skip. Note: The horizontal axis represents the layers of the network along the output direction, from left to right. The “Pool Skip S4” means
+<div align="center"> <img src="./l2_l1.png" alt="ResNet Effect" width="1200"/> </div> <p align="center"> <i>Figure: $\frac{l_{2}}{l_{1}}$ value quantitative comparison in ResNet350 and ResNet420 on CIFAR10 and CIFAR100 Datasets. The $\frac{l_{2}}{l_{1}}$ values were computed based on the output sequence of the network, with and without the incorporation of the Pool Skip. The plot highlights a moderate alleviation of the network degradation issue in shallow layers upon the integration of Pool Skip. Note: The horizontal axis represents the layers of the network along the output direction, from left to right. The “Pool Skip S4” means
 the size of Pool operation kernel is 4, “Pool Skip S4” does 2.</i> </p>
 
 ### Effect on ResNet
