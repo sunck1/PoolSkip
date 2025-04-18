@@ -26,7 +26,7 @@ practice on cifar100 using pytorch
 #### Requirements
 
 - python3.6
-- pytorch1.6.0+cu101
+- pytorch1.6.0
 
 #### train the model
 You need to specify the net you want to train using arg -net
