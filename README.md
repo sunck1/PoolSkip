@@ -1,3 +1,7 @@
+**AAAI2025**: Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities  
+
+[![Paper](https://ojs.aaai.org/index.php/AAAI/article/view/34278)  
+
 # Pytorch-cifar100
 
 practice on cifar100 using pytorch
