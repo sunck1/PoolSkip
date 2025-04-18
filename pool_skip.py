@@ -25,13 +25,6 @@ class pool_skip(nn.Module):
         super(pool_skip, self).__init__()
         self.pool_func = pool(pool_size)
         self.conv = nn.Conv2d(input_channel, output_channel, kernel_size=kernel_size, stride=stride, padding=padding)
-
-    def l2_l1_ratio(self, weight):
-        # Used for visualization: computes the ratio of L2 norm to L1 norm of the weight tensor
-        l1_norm = torch.norm(weight, p=1)
-        l2_norm = torch.norm(weight, p=2)
-        ratio = l2_norm / l1_norm     
-        return ratio.item()
         
     def forward(self, x):
         x = self.conv(self.pool_func(x)) + x
