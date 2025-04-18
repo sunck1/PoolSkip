@@ -39,8 +39,10 @@ $ python train.py -net vgg16 -gpu
 This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
 Special thanks to the contributors for making development easier.  
 
-### If you find this project useful, please cite:
+### Citation
+If this project contributes to your work, please cite the following paper:
 
+```
 @inproceedings{sun2025beyond,
   title={Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities},
   author={Sun, Chengkun and Pan, Jinqian and Jin, Zhuoli and Terry, Russell Stevens and Bian, Jiang and Xu, Jie},
@@ -50,3 +52,4 @@ Special thanks to the contributors for making development easier.
   pages={20672--20680},
   year={2025}
 }
+```
