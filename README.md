@@ -40,7 +40,7 @@ This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
 Special thanks to the contributors for making development easier.  
 
 ### Mathematical Derivation  
-For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided PDF **(./Mathematical_proof.pdf)**.
+For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided **([Mathematical Derivation PDF]./Mathematical_proof.pdf)**.
 
 
 ### Citation
