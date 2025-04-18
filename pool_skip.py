@@ -19,6 +19,7 @@ class pool(nn.Module):
 
 
 class pool_skip(nn.Module):
+    expansion = 1
     def __init__(self, input_channel, output_channel,
                  stride = 1,kernel_size = 3,padding = 1,size = 2):
         super(pool_skip, self).__init__()
