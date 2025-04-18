@@ -20,9 +20,9 @@ class pool(nn.Module):
 
 class pool_skip(nn.Module):
     def __init__(self, input_channel, output_channel,
-                 stride = 1,kernel_size = 3,padding = 1,size = 2):
+                 stride = 1,kernel_size = 3,padding = 1,pool_size = 2):
         super(pool_skip, self).__init__()
-        self.pool_func = pool(size)
+        self.pool_func = pool(pool_size)
         self.conv = nn.Conv2d(input_channel, output_channel, kernel_size=kernel_size,stride=stride, padding=padding)
     def l2_l1_ratio(self,weight):
         l1_norm = torch.norm(weight, p=1)
