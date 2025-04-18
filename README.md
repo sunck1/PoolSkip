@@ -11,8 +11,8 @@ To use our `PoolSkip` module directly, you can download [`pool_skip.py`](./pool_
 To integrate PoolSkip, simply insert it after the convolutional layer, but before the activation function and batch normalization layer.
 While effective with other convolution kernel sizes, the performance is best when applied after a 1x1 convolution.
 
-<div align="left"> <img src="./l2_l1.png" alt="ResNet Effect" width="1200"/> </div> <p align="center"> <i><small>Figure: $\frac{l_{2}}{l_{1}}$ value quantitative comparison in ResNet350 and ResNet420 on CIFAR10 and CIFAR100 Datasets. The $\frac{l_{2}}{l_{1}}$ values were computed based on the output sequence of the network, with and without the incorporation of the Pool Skip. The plot highlights a moderate alleviation of the network degradation issue in shallow layers upon the integration of Pool Skip. Note: The horizontal axis represents the layers of the network along the output direction, from left to right. The “Pool Skip S4” means
-the size of Pool operation kernel is 4, “Pool Skip S4” does 2.</i> </p>
+<div align="center"> <img src="./l2_l1.png" alt="ResNet Effect" width="1200"/> </div> <p align="left"> <i><small>Figure: $\frac{l_{2}}{l_{1}}$ value quantitative comparison in ResNet350 and ResNet420 on CIFAR10 and CIFAR100 Datasets. The $\frac{l_{2}}{l_{1}}$ values were computed based on the output sequence of the network, with and without the incorporation of the Pool Skip. The plot highlights a moderate alleviation of the network degradation issue in shallow layers upon the integration of Pool Skip. Note: The horizontal axis represents the layers of the network along the output direction, from left to right. The “Pool Skip S4” means
+the size of Pool operation kernel is 4, “Pool Skip S4” does 2.<small></i> </p>
 
 ### Effect on ResNet
 
