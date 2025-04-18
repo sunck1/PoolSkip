@@ -4,37 +4,49 @@
 
 **Paper**: [AAAI Library Link](https://ojs.aaai.org/index.php/AAAI/article/view/34278)
 
-# Pytorch-cifar100
+### Quick Integration
+
+To use our `PoolSkip` module directly, you can download [`pool_skip.py`](./pool_skip.py) and plug it into your architecture.  
+Pretrained checkpoints on CIFAR-100 are included in this repo for quick verification and reproduction.
+
+Our subsequent experiments have found that the performance of the PoolSkip structure improves when applied after a 1x1 convolution kernel. To integrate PoolSkip, simply insert it after the convolutional layer, but before the activation function and batch normalization layer.
+
+<div align="center"> <img src="./" alt="ResNet Effect" width="600"/> </div> <p align="center"> <i>Figure: Visualization showing the reduction in shallow-layer 0 weights on ResNet after applying `PoolSkip`.</i> </p>
+
+### Effect on ResNet
+
+This structure is particularly effective for addressing elimination singularity in convolutional neural networks. After applying PoolSkip, we observed a significant reduction in the number of shallow-layer 0 weights on ResNet architectures, improving model robustness and feature learning.
+
+
+### Pytorch-cifar100
 
 practice on cifar100 using pytorch
 
-## Requirements
+#### Requirements
 
 This is my experiment eviroument
 - python3.6
 - pytorch1.6.0+cu101
 
 
-## Usage
-
-### 1. enter directory
+#### 1. enter directory
 ```bash
 $ cd pytorch-cifar100
 ```
 
-### 2. dataset
+#### 2. dataset
 I will use cifar100 dataset from torchvision since it's more convenient, but I also
 kept the sample code for writing your own dataset module in dataset folder, as an
 example for people don't know how to write it.
 
-### 3. train the model
+#### 3. train the model
 You need to specify the net you want to train using arg -net
 
 ```bash
 # use gpu to train vgg16
 $ python train.py -net vgg16 -gpu
 ```
-## Acknowledgements
+### Acknowledgements
 This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
 Special thanks to the contributors for making development easier.  
 
