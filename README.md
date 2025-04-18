@@ -1,5 +1,8 @@
-# **AAAI2025**: Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities  [[Paper](https://ojs.aaai.org/index.php/AAAI/article/view/34278)]
+# Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities (AAAI 25)
 
+**Authors**: Chengkun Sun, Jinqian Pan, Zhuoli Jin, Russell Stevens Terry, Jiang Bian, Jie Xu
+
+**Paper**: [AAAI Library Link](https://ojs.aaai.org/index.php/AAAI/article/view/34278)
 
 # Pytorch-cifar100
 
