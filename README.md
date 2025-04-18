@@ -32,7 +32,7 @@ This is my experiment eviroument
 
 #### 1. enter directory
 ```bash
-$ cd pytorch-cifar100
+$ cd PoolSkip
 ```
 
 #### 2. dataset
