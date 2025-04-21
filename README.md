@@ -4,6 +4,12 @@
 
 **Paper**: [AAAI Library Link](https://ojs.aaai.org/index.php/AAAI/article/view/34278)
 
+### Environment Build
+```bash
+git clone git@github.com:sunck1/PoolSkip.git
+conda env create -f environment.yml
+```
+
 ### Quick Integration
 
 To use our `PoolSkip` module directly, you can download [`pool_skip.py`](./pool_skip.py) and plug it into your architecture.  
@@ -35,13 +41,13 @@ You need to specify the net you want to train using arg -net
 # use gpu to train resnet18 with Pool Skip
 $ python train.py -net resnet18_poolskip -gpu
 ```
-### Acknowledgements
-This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
-Special thanks to the contributors for making development easier.  
 
 ### Mathematical Derivation  
 For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided **[Mathematical Derivation PDF](./Supplementary materials/Mathematical_proof.pdf)**.
 
+### Acknowledgements
+This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
+Special thanks to the contributors for making development easier.  
 
 ### Citation
 If this project contributes to your work, please cite the following paper:
