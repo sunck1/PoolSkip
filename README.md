@@ -1,13 +1,21 @@
-# Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities (AAAI 25)
+# [AAAI 25] Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities ([Paper Link](https://ojs.aaai.org/index.php/AAAI/article/view/34278))
 
 **Authors**: Chengkun Sun, Jinqian Pan, Zhuoli Jin, Russell Stevens Terry, Jiang Bian, Jie Xu
-
-**Paper**: [AAAI Library Link](https://ojs.aaai.org/index.php/AAAI/article/view/34278)
 
 ### Environment Build
 ```bash
 git clone git@github.com:sunck1/PoolSkip.git
 conda env create -f environment.yml
+```
+
+### Pytorch-cifar100
+practice on cifar100 using pytorch
+
+#### train the model
+You need to specify the net you want to train using arg -net
+
+```bash
+python train.py -net resnet18_poolskip -gpu
 ```
 
 ### Quick Integration
@@ -24,23 +32,6 @@ This structure is particularly effective for addressing elimination singularity 
 
 <div align="center"> <img src="./Supplementary materials/l2_l1.png" alt="ResNet Effect" width="1200"/> </div> <p align="left"> <small><i>Figure: $\frac{l_{2}}{l_{1}}$ value quantitative comparison in ResNet350 and ResNet420 on CIFAR10 and CIFAR100 Datasets. The $\frac{l_{2}}{l_{1}}$ values were computed based on the output sequence of the network, with and without the incorporation of the Pool Skip. The plot highlights a moderate alleviation of the network degradation issue in shallow layers upon the integration of Pool Skip. Note: The horizontal axis represents the layers of the network along the output direction, from left to right. The “Pool Skip S4” means
 the size of Pool operation kernel is 4, “Pool Skip S4” does 2.</i><small> </p>
-
-### Pytorch-cifar100
-
-practice on cifar100 using pytorch
-
-#### Requirements
-
-- python3.6
-- pytorch1.6.0
-
-#### train the model
-You need to specify the net you want to train using arg -net
-
-```bash
-# use gpu to train resnet18 with Pool Skip
-$ python train.py -net resnet18_poolskip -gpu
-```
 
 ### Mathematical Derivation  
 For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided **[Mathematical Derivation PDF](./Supplementary materials/Mathematical_proof.pdf)**.
