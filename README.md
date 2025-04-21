@@ -1,14 +1,15 @@
 <div align="center">
 
-# [AAAI 25] Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities
+# Beyond Skip Connection: Pooling and Unpooling Design for Elimination Singularities
 
 **Authors**: Chengkun Sun, Jinqian Pan, Zhuoli Jin, Russell Stevens Terry, Jiang Bian, Jie Xu
 <p>
-  <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34278"><img src="https://img.shields.io/badge/AAAI2025-Paper%20Link-red">
+  <a href="https://arxiv.org/abs/2409.13154"><img src="https://img.shields.io/badge/arXiv-2409.13154-red">
+  <a href="https://ojs.aaai.org/index.php/AAAI/article/view/34278"><img src="https://img.shields.io/badge/AAAI2025-Paper%20Link-blue">
 </p>
 </div>
 
-### Installation
+## Installation
 ```bash
 git clone git@github.com:sunck1/PoolSkip.git
 conda env create -f environment.yml
