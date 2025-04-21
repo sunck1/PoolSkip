@@ -15,17 +15,17 @@ git clone git@github.com:sunck1/PoolSkip.git
 conda env create -f environment.yml
 ```
 
-### Pytorch-cifar100
-practice on cifar100 using pytorch
+## Training the model
 
-#### train the model
-You need to specify the net you want to train using arg -net
+### Datasets
+We practice on cifar100 using pytorch.
 
+### Training
 ```bash
 python train.py -net resnet18_poolskip -gpu
 ```
 
-### Quick Integration
+## Integration
 
 To use our `PoolSkip` module directly, you can download [`pool_skip.py`](./pool_skip.py) and plug it into your architecture.  
 
@@ -33,7 +33,7 @@ To integrate PoolSkip, simply insert it after the convolutional layer, but befor
 While effective with other convolution kernel sizes, the performance is best when applied after a 1x1 convolution.
 
 
-### Effect on ResNet
+## Effect on ResNet
 
 This structure is particularly effective for addressing elimination singularity in convolutional neural networks. After applying PoolSkip, we observed a significant reduction in the number of shallow-layer 0 weights on ResNet architectures, improving model robustness and feature learning.
 
