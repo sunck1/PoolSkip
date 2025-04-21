@@ -41,7 +41,7 @@ This structure is particularly effective for addressing elimination singularity 
 the size of Pool operation kernel is 4, “Pool Skip S4” does 2.</i><small> </p>
 
 ## Mathematical Derivation
-For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided **[Mathematical Derivation PDF](./Supplementary materials/Mathematical_proof.pdf)**.
+For a complete explanation of the two compensation effects introduced by PoolSkip, including rigorous mathematical proofs, please refer to the provided **[Mathematical Derivation PDF](./Supplementary%20materials/Mathematical_proof.pdf)**.
 
 ## Acknowledgements
 This project was based on (https://github.com/weiaicunzai/pytorch-cifar100).
