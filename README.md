@@ -32,7 +32,7 @@ python train.py -net resnet18_poolskip -gpu
 
 ## Integration
 
->[!IMPORTANT]
+>[!TIP]
 > To use our `PoolSkip` module directly, you can download [`pool_skip.py`](./pool_skip.py) and plug it into your architecture.  
 
 To integrate PoolSkip, simply insert it after the convolutional layer, but before the activation function and batch normalization layer.
