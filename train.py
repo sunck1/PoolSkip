@@ -7,36 +7,27 @@ author baiyu
 """
 
 import os
-import sys
 import argparse
 import time
-from datetime import datetime
 
 import numpy as np
 import torch
 import torch.nn as nn
 import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-
-from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 
 from conf import settings
 from utils import get_network, get_training_dataloader, get_test_dataloader, WarmUpLR, \
-    most_recent_folder, most_recent_weights, last_epoch, best_acc_weights
-import torch.nn.functional as F
-import os
-
-
+    most_recent_weights, last_epoch
 
 def train(epoch):
 
     start = time.time()
     net.train()
     whole_loss = 0.0
+
     for batch_index, (images, labels) in enumerate(cifar100_training_loader):
-        #var_zero = zeros_matrix = torch.zeros(128,100).cuda()
+        # var_zero = zeros_matrix = torch.zeros(128,100).cuda()
         if args.gpu:
             labels = labels.cuda()
             images = images.cuda()
@@ -49,12 +40,6 @@ def train(epoch):
         optimizer.step()
 
         n_iter = (epoch - 1) * len(cifar100_training_loader) + batch_index + 1
-        last_layer = list(net.children())[-1]
-        #for name, para in last_layer.named_parameters():
-            #if 'weight' in name:
-                #writer.add_scalar('LastLayerGradients/grad_norm2_weights', para.grad.norm(), n_iter)
-            #if 'bias' in name:
-                #writer.add_scalar('LastLayerGradients/grad_norm2_bias', para.grad.norm(), n_iter)
 
         print('Training Epoch: {epoch} [{trained_samples}/{total_samples}]\tLoss: {:0.4f}\tLR: {:0.6f}'.format(
             loss.item(),
@@ -63,10 +48,11 @@ def train(epoch):
             trained_samples=batch_index * args.b + len(images),
             total_samples=len(cifar100_training_loader.dataset)
         ))
+
         whole_loss = whole_loss + loss.item()
         #update training loss for each iteration
         writer.add_scalar('Train/loss', loss.item(), n_iter)
-        #sys.exit()
+
         if epoch <= args.warm:
             warmup_scheduler.step()
 
@@ -106,6 +92,7 @@ def eval_training(epoch=0, tb=True):
     if args.gpu:
         print('GPU INFO.....')
         print(torch.cuda.memory_summary(), end='')
+
     print('Evaluating Network.....')
     print('Test set: Epoch: {}, Average loss: {:.4f}, Accuracy: {:.4f}, Time consumed:{:.2f}s'.format(
         epoch,
@@ -132,6 +119,7 @@ if __name__ == '__main__':
     parser.add_argument('-lr', type=float, default=0.1, help='initial learning rate')
     parser.add_argument('-resume', action='store_true', default=False, help='resume training')
     args = parser.parse_args()
+
     for i in [7777] :
         print(i)
         seed = i
@@ -163,6 +151,7 @@ if __name__ == '__main__':
             batch_size=args.b,
             shuffle=True
         )
+
         loss_function = nn.CrossEntropyLoss()
         optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9, weight_decay=5e-4)
         train_scheduler = optim.lr_scheduler.MultiStepLR(optimizer, milestones=settings.MILESTONES, gamma=0.2) #learning rate decay
@@ -171,56 +160,41 @@ if __name__ == '__main__':
         
         if args.resume:
             recent_folder = f"{i}"
-            #if not recent_folder:
-                #raise Exception('no recent folder were found')
-
             checkpoint_path = os.path.join(settings.CHECKPOINT_PATH, args.net,f"{i}")
-
         else:
             checkpoint_path = os.path.join(settings.CHECKPOINT_PATH, args.net,f"{i}")
-        
-        #use tensorboard
         
         if not os.path.exists(settings.LOG_DIR):
             os.mkdir(settings.LOG_DIR)
 
-        #since tensorboard can't overwrite old values
-        #so the only way is to create a new tensorboard log
-        writer = SummaryWriter(log_dir=os.path.join(
-                settings.LOG_DIR, args.net, settings.TIME_NOW))
+        # since tensorboard can't overwrite old values
+        # so the only way is to create a new tensorboard log
+        writer = SummaryWriter(log_dir=os.path.join(settings.LOG_DIR, args.net, settings.TIME_NOW))
         
         input_tensor = torch.Tensor(1, 3, 32, 32)
         if args.gpu:
             input_tensor = input_tensor.cuda()
         writer.add_graph(net, input_tensor)
-        #create checkpoint folder to save model
+
+        # create checkpoint folder to save model
         if not os.path.exists(checkpoint_path):
             os.makedirs(checkpoint_path)
+
         checkpoint_path = os.path.join(checkpoint_path, '{net}-{epoch}-{type}.pth')
         train_time = []
         infer_time = []
         best_acc = 0.0
         lowest_loss = 99999999999
         if args.resume:
-            """
-            best_weights = best_acc_weights(os.path.join(settings.CHECKPOINT_PATH, args.net, recent_folder))
-            if best_weights:
-                weights_path = os.path.join(settings.CHECKPOINT_PATH, args.net, recent_folder, best_weights)
-                print('found best acc weights file:{}'.format(weights_path))
-                print('load best training file to test acc...')
-                net.load_state_dict(torch.load(weights_path))
-                best_acc,_ = eval_training(tb=False)
-                print('best acc is {:0.2f}'.format(best_acc))
-            """
             recent_weights_file = most_recent_weights(os.path.join(settings.CHECKPOINT_PATH, args.net, recent_folder))
             if not recent_weights_file:
                 raise Exception('no recent weights file were found')
+            
             weights_path = os.path.join(settings.CHECKPOINT_PATH, args.net, recent_folder, recent_weights_file)
             print('loading weights file {} to resume training.....'.format(weights_path))
             net.load_state_dict(torch.load(weights_path))
 
             resume_epoch = last_epoch(os.path.join(settings.CHECKPOINT_PATH, args.net, recent_folder))
-
 
         for epoch in range(1, settings.EPOCH + 1):
             print(epoch)
@@ -230,14 +204,16 @@ if __name__ == '__main__':
             if args.resume:
                 if epoch <= resume_epoch:
                     continue
+
             train_time_each,loss = train(epoch)
             train_time.append(train_time_each)
             acc,inference_time = eval_training(epoch)
             infer_time.append(inference_time)
 
-            #start to save best performance model after learning rate decay to 0.01
+            # start to save best performance model after learning rate decay to 0.01
             print(f"loss is : {loss} and lowest loss is :{lowest_loss}")
             print(f"best_acc:{best_acc}")
+
             if  loss < lowest_loss:
                 lowest_loss = loss
                 weights_path = checkpoint_path.format(net='' ,epoch='',type='best')
@@ -251,5 +227,3 @@ if __name__ == '__main__':
                 print('saving weights file to {}'.format(weights_path))
                 torch.save(net.state_dict(), weights_path)
             print(np.mean(infer_time))
-
-        #writer.close()
