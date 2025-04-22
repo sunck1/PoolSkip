@@ -19,6 +19,7 @@
 git clone git@github.com:sunck1/PoolSkip.git
 cd PoolSkip
 conda env create -f environment.yml
+conda activate PoolSkip
 ```
 
 ## Training the model
