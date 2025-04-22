@@ -24,7 +24,7 @@ conda env create -f environment.yml
 ## Training the model
 
 ### Datasets
-We practice on cifar100 using pytorch.
+We use CIFAR100 for practice.
 
 ### Training
 ```bash
