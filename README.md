@@ -9,6 +9,10 @@
 
 </div>
 
+<p align="center">
+  <img src="./Supplementary materials/arch.drawio.png" width="1200">
+</p>
+
 ## Installation
 ```bash
 git clone git@github.com:sunck1/PoolSkip.git
